@@ -176,19 +176,19 @@ The elevator controller system follows an event-driven architecture with multipl
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│                    Elevator Controller                   │
-│                                                          │
-│  ┌─────────┐    ┌──────────┐    ┌─────────┐           │
-│  │  Door   │    │   User   │    │ Elevator│           │
-│  │ Objects │◄──►│ Objects  │◄──►│ Object  │           │
-│  └─────────┘    └──────────┘    └─────────┘           │
+│                    Elevator Controller                  │
+│                                                         │
+│  ┌─────────┐    ┌──────────┐    ┌─────────┐             │
+│  │  Door   │    │   User   │    │ Elevator│             │
+│  │ Objects │◄──►│ Objects  │◄──►│ Object  │             │
+│  └─────────┘    └──────────┘    └─────────┘             │
 │       │              │                 │                │
 │       └──────────────┴─────────────────┘                │
 │                      │                                  │
-│              ┌───────▼────────┐                        │
-│              │  Event Queue   │                        │
-│              │  & Scheduler   │                        │
-│              └────────────────┘                        │
+│              ┌───────▼────────┐                         │
+│              │  Event Queue   │                         │
+│              │  & Scheduler   │                         │
+│              └────────────────┘                         │
 └─────────────────────────────────────────────────────────┘
 ```
 
@@ -210,7 +210,7 @@ The elevator controller system follows an event-driven architecture with multipl
                   │                                         │
               [Distracted]                            [Entering]
                   │                                         │
-                  └──────────────────────────►[In_Elevator]
+                  └──────────────────────────────────►[In_Elevator]
                                                             │
                                               ┌─────────────┤
                                               │             │
@@ -276,17 +276,17 @@ User          Door[Floor1]    Elevator      Door[Floor5]
  │                 │              │──move_to─────►│
  │                 │◄──arrive─────│               │
  │                 │──open()──────│               │
- │◄──door_open────│              │               │
+ │◄──door_open─────│              │               │
  │──enter()───────►│              │               │
  │                 │──user_in────►│               │
- │──destination(5)──────────────►│               │
+ │──destination(5)───────────────►│               │
  │                 │◄──close()────│               │
  │                 │              │──move_to─────►│
  │                 │              │               │
  │                 │              │──arrive──────►│
  │                 │              │               │──open()
- │◄──────────────door_open───────│◄──────────────│
- │──exit()────────────────────────────────────────►│
+ │◄──────────────door_open────────│◄──────────────│
+ │──exit()───────────────────────────────────────►│
  │                 │              │               │──signal()
  │                 │              │◄──can_restart─│
 ```
